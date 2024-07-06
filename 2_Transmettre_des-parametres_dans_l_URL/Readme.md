@@ -21,3 +21,12 @@ ex: ```http://127.0.0.1:500/eleves?c=2A```
 
 
 soit la **fonction** _eleves()_ associe a la **route** _"/eleves"_ qui renvoit un **template** _"eleves.html"_
+
+
+l'objet **request** contient toutes les informations de la requete, et donc si il y a des parametres dans la requete on pourra les recuperer
+
+- la saisie de l'URL ![url avec parametres](image.png)
+
+- affichera via  ```print(request.args)``` 
+
+![affichage dictionnaire](image-1.png)

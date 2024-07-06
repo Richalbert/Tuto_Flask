@@ -1,6 +1,6 @@
 # mon_app.py
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import datetime
 
 app = Flask(__name__)
@@ -21,6 +21,8 @@ liste_eleves = [
 
 @app.route("/eleves")
 def eleves():
+    print(request.args)
+
     return render_template("eleves.html", eleves=liste_eleves)
 
 
