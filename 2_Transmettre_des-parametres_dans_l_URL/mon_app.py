@@ -21,9 +21,14 @@ liste_eleves = [
 
 @app.route("/eleves")
 def eleves():
-    print(request.args['c'])
-    print(request.args['autre'])
-    return render_template("eleves.html", eleves=liste_eleves)
+    # classe = request.args['c']    # cree une erreur si c n existe pas dans l'url
+    classe = request.args.get('c')
+    if classe:
+        eleves_selectionnes = [ eleve for eleve in liste_eleves if eleve['classe'] == classe ]
+    else:
+        eleves_selectionnes = []
+    print(classe)
+    return render_template("eleves.html", eleves=eleves_selectionnes)
 
 
 if __name__ == '__main__':
