@@ -30,3 +30,12 @@ l'objet **request** contient toutes les informations de la requete, et donc si i
 - affichera via  ```print(request.args)``` 
 
 ![affichage dictionnaire](image-1.png)
+
+
+c'est un dictionnaire donc 
+```python
+print(request.args['c'])
+print(request.args['autre'])
+```
+affiche
+![valeur du dictionnaire](image-2.png)

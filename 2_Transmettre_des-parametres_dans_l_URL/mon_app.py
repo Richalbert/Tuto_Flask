@@ -21,8 +21,8 @@ liste_eleves = [
 
 @app.route("/eleves")
 def eleves():
-    print(request.args)
-
+    print(request.args['c'])
+    print(request.args['autre'])
     return render_template("eleves.html", eleves=liste_eleves)
 
 
