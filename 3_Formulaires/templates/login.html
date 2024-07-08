@@ -1,0 +1,34 @@
+<!-- templates/login.html  -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon appli</title>
+</head>
+
+<body>
+    <h1>Page de connexion</h1>
+
+    <!-- <form action="/traitement" method="GET"> -->
+    <form action="{{ url_for('traitement') }}" method="GET">
+        <p>
+            <!-- Champ de type text -->
+            <label for="nom">Nom : </label>
+            <input type="text" name="nom" id="nom" required>
+        </p>
+        <p>
+            <!-- Champ de type password -->
+            <label for="mdp">Password : </label>
+            <input type="password" name="mdp" id="mdp" required>
+        </p>
+        <p>
+            <!-- Bouton d'envoi du formulaire -->
+            <input type="submit" value="Envoyer le formulaire">
+        </p>
+    </form>
+</body>
+
+</html>
