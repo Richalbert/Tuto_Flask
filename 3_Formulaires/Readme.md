@@ -28,6 +28,16 @@ et on peut recuperer ces valeurs avec *request.args* qui est un dictionnaire pas
 une requete GET n'est pas adaptee a l'envoi de donnees sensible au serveur
 
 
+### avec la methode POST
+- les donnees ne sont plus transmise dans l'URL
+- mais n'est pas un gage de securite (cf onglet requete de l'inspecteur)
+- pour plus de securite il faut coupler l'envoi de la requete avec le protocole HTTPS
+- une route par defaut n'accepte pas la methode POST, il faut ecrire
+- *request.args* devient un dictionnaire vide puisque cela correspond au donnees transmise dans l'URL
+- *request.form* est l'objet qui permet de recuperer les donnees du formulaire avec POST
+
+
+
 
 Les elements de type *text*
 ---------------------------

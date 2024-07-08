@@ -22,11 +22,20 @@ def login():
     return render_template('login.html')
 
 
-@app.route("/traitement")
+@app.route("/traitement", methods=['POST'])
 def traitement():
     # return render_template('traitement.html')
-    print(request.args)
-    return "Traitement des donnees"
+    # print(request.args)
+    donnees = request.form
+    # print(donnees)
+    # nom = donnees['nom']
+    nom = donnees.get('nom')
+    mdp = donnees.get('mdp')
+    # print(nom, mdp)
+    if nom=='admin' and mdp=='1234':
+        return f"Bonjour {nom}, vous etes connecte"
+    else:
+        return "un probleme est survenu"
 
 
 
