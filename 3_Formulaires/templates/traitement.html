@@ -10,8 +10,11 @@
 </head>
 
 <body>
-    <p>Bienvenue sur le site de Richalbert</p>
-    <a href="{{ url_for('login') }}">Se connecter</a>
+    {% if nom_utilisateur %}
+    <p>Bonjour {{ nom_utilisateur }}, vous etes connecte</p>
+    {% else %}
+    <p>Un probleme est survenu</p>
+    {% endif %}
 </body>
 
 </html>

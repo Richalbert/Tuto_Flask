@@ -1,12 +1,12 @@
 # mon_app.py
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import datetime
 
 app = Flask(__name__)
 
 @app.route("/")
-def bonjour():
+def index():
     return render_template('index.html')
 
 
@@ -22,22 +22,21 @@ def login():
     return render_template('login.html')
 
 
-@app.route("/traitement", methods=['POST'])
+@app.route("/traitement", methods=['POST', 'GET'])
 def traitement():
-    # return render_template('traitement.html')
-    # print(request.args)
-    donnees = request.form
-    # print(donnees)
-    # nom = donnees['nom']
-    nom = donnees.get('nom')
-    mdp = donnees.get('mdp')
-    # print(nom, mdp)
-    if nom=='admin' and mdp=='1234':
-        return f"Bonjour {nom}, vous etes connecte"
+
+    if request.method == 'POST':
+        donnees = request.form
+    
+        nom = donnees.get('nom')
+        mdp = donnees.get('mdp')
+    
+        if nom=='admin' and mdp=='1234':
+            return render_template('traitement.html', nom_utilisateur=nom)
+        else:
+            return render_template('traitement.html')
     else:
-        return "un probleme est survenu"
-
-
+        return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
