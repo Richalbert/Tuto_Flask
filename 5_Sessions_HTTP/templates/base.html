@@ -20,7 +20,12 @@
                 <a href="{{ url_for('index')}}">Accueil</a>
             </li>
             <li class="navbar-item login-logout">
+
+                {% if session['nom_utilisateur'] %}
+                <a href="{{ url_for('logout') }}">Se deconnecter</a>
+                {% else %}
                 <a href="{{ url_for('login') }}">Se connecter</a>
+                {% endif %}
             </li>
         </ul>
 

@@ -64,6 +64,13 @@ def login():
         return render_template('login.html')
 
 
+@app.route('/logout')
+def logout():
+    print(session)
+    session.pop('nom_utilisateur', None)
+    print(session)
+    return redirect(url_for('login'))
+
 
 @app.route("/compteur")
 def compteur():

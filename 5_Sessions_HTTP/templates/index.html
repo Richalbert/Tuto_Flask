@@ -5,6 +5,7 @@
 
 <h1>Accueil</h1>
 
-<p>Bienvenue sur le site de Rich@lbert</p>
+<p>Bonjour {{ session['nom_utilisateur']|title if session['nom_utilisateur'] else 'invite' }}, bienvenue sur mon site
+</p>
 
 {% endblock %}
