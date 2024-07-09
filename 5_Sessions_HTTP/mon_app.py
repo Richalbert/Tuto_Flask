@@ -16,6 +16,20 @@ def index():
     return render_template('index.html')
 
 
+# un tableau d'utilisateurs (dictionnaoire)
+utilisateurs = [
+    {"nom": "admin", "mdp": "1234"},
+    {"nom": "marie", "mdp": "1234"},
+    {"nom": "paul", "mdp": "1234"},
+]
+
+
+def recherche_utilisateurs(nom_utilisateur, mot_de_passe):
+    for utilsateur in utilisateurs:
+        if utilsateur['nom'] == nom_utilisateur and utilsateur['mdp'] == mot_de_passe:
+            return utilsateur
+    return None
+
 
 @app.route("/formulaires")
 def formulaires():
@@ -27,21 +41,26 @@ def formulaires():
 @app.route("/login", methods=['POST', 'GET'])
 def login():
 
-    '''SI les donnees du formulaires sont envoye par la methode POST
-       donc il faut traiter les donnees sinon il faut afficher 
-       le formulaire'''
     if request.method == 'POST':
         donnees = request.form
         nom = donnees.get('nom')
         mdp = donnees.get('mdp')
-        if nom=='admin' and mdp=='1234':
+
+        utilisateur = recherche_utilisateurs(nom, mdp)
+
+        if utilisateur is not None:
+            print("utilsateur trouve")
+            session['nom_utilisateur'] = utilisateur['nom']
+            print(session)
             return redirect(url_for('index'))
         else:
-            # les donnees du formulaires sont incorrecte
-            # return redirect(url_for('login'))
-            return redirect(request.url)    # rediriger vers l'origine de l'url
+            print( 'utilisateur inconnu')
+            return redirect(request.url)    
     else: 
-        # on affiche la page de connexion avec le formulaire
+        print(session)
+        if 'nom_utilisateur' in session:
+            return redirect(url_for('index'))
+       
         return render_template('login.html')
 
 
