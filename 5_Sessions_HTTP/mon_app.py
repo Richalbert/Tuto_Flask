@@ -22,10 +22,27 @@ def formulaires():
     return render_template('formulaires.html')
 
 
-
-@app.route("/login")
+'''La fonction login() affiche le formulaire et 
+   realise le traitement des donnees saisies'''
+@app.route("/login", methods=['POST', 'GET'])
 def login():
-    return render_template('login.html')
+
+    '''SI les donnees du formulaires sont envoye par la methode POST
+       donc il faut traiter les donnees sinon il faut afficher 
+       le formulaire'''
+    if request.method == 'POST':
+        donnees = request.form
+        nom = donnees.get('nom')
+        mdp = donnees.get('mdp')
+        if nom=='admin' and mdp=='1234':
+            return redirect(url_for('index'))
+        else:
+            # les donnees du formulaires sont incorrecte
+            # return redirect(url_for('login'))
+            return redirect(request.url)    # rediriger vers l'origine de l'url
+    else: 
+        # on affiche la page de connexion avec le formulaire
+        return render_template('login.html')
 
 
 
