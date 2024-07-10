@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- templates/nombre-mystere.html -->
+
+<h1>Jeu du nombre mystere</h1>
+
+<p>Je choisi un entier entre 0 et 100</p>
+
+<form action="{{ url_for('jeu') }}" method="POST">
+    <p>
+        <label for="nombre">Devine le nombre :</label>
+        <input type="number" name="nombre" id="nombre" required>
+    </p>
+    <p>
+        <input type="submit" value="Valider">
+    </p>
+</form>
+
+<hr>
+
+{% if message %}
+    {{ message }}
+{% endif %}
+
+{% endblock %}

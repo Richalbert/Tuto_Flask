@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- templates/index.html -->
+
+<h1>Accueil</h1>
+
+<p>Bonjour {{ session['nom_utilisateur']|title if session['nom_utilisateur'] else 'invite' }}, bienvenue sur mon site
+</p>
+
+{% endblock %}
