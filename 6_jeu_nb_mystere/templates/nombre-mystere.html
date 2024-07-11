@@ -1,26 +1,53 @@
 {% extends "base.html" %}
 
+{% block css %}
+<!-- static/css/jeu.css -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/jeu.css') }}">
+{% endblock %}
+
+
+
 {% block content %}
 <!-- templates/nombre-mystere.html -->
+<div id="jeu">
+    <h1>Jeu du nombre mystere</h1>
 
-<h1>Jeu du nombre mystere</h1>
+    {% if session['partie_en_cours'] %} <!-- Cette partie concerne la partie est en cours -->
 
-<p>Je choisi un entier entre 0 et 100</p>
+    <p>Je choisi un entier entre 0 et 100</p>
+    <form action="{{ url_for('jeu') }}" method="POST">
+        <p>
+            <label for="nombre">Devine le nombre :</label>
+            <input type="number" name="nombre" id="nombre" required autofocus>
+        </p>
+        <p>
+            <input class="btn" type="submit" value="Valider">
+        </p>
+    </form>
 
-<form action="{{ url_for('jeu') }}" method="POST">
-    <p>
-        <label for="nombre">Devine le nombre :</label>
-        <input type="number" name="nombre" id="nombre" required>
-    </p>
-    <p>
-        <input type="submit" value="Valider">
-    </p>
-</form>
+    <hr>
 
-<hr>
-
-{% if message %}
+    {% if message %}
     {{ message }}
-{% endif %}
+    {% endif %}
+
+
+    {% else %} <!-- Cette partie concerne la partie debute ou a ete gagne -->
+
+    {% if message %} <!-- si la partie a ete gagne -->
+    {{ message }} <!-- on affiche bravo -->
+    <p>Le nombre mystere etait {{ session['nb_mystere'] }} !</p>
+    {% endif %}
+
+    <!-- on affiche un lien pour recommencer la  partie -->
+    <a href="{{ url_for('jeu') }}">Nouvelle partie</a>
+
+    {% endif %}
+
+
+
+
+
+</div>
 
 {% endblock %}

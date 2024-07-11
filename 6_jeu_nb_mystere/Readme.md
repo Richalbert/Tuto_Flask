@@ -11,3 +11,8 @@ la fonction jeu()
 
 - affiche le formulaire a si on accede a l'URL */jeu* avec la methode 'GET'
 - traiter les donnees du formulaire si c'est la methode 'POST' qui accede a la route */jeu*
+
+
+- quand la partie est gagne 
+  - supprimer le cookie de session
+  - recommancer la partie

@@ -18,21 +18,40 @@ def index():
 
 @app.route("/jeu", methods=['POST', 'GET'])
 def jeu():
-    if request.method == 'POST':
-        # traiter les donnees du formulaire
-        reponse = int(request.form.get('nombre'))   # on recupere la donnee 'name' du formulaire
+    #
+    # On est arrive a cette route a partir du formulaire donc avec la methode 'POST'
+    # On va donc traiter les donnees du formulaire
+    #
+    if request.method == 'POST':  
+        
+        # on recupere la donnee 'name' du formulaire
+        reponse = int(request.form.get('nombre'))  
+
         if reponse == session['nb_mystere']:
             message = "Bravo, c'est gagne"
+
+            # quand la partie est gagne, la partie s'arrete et la partie en cours s'arrete
+            session['partie_en_cours'] = False
+
         elif reponse < session['nb_mystere']:
             message = "Votre nombre est trop petit"
+
         else:
             message = "Votre nombre est trop grand"
+
         print(session)
+
         return render_template('nombre-mystere.html', message=message)
-    else:
-        # debut de partie
+
+
+    #
+    # On est arrive a cette route a partir de l'URL donc avec la methode 'GET'
+    # donc la partie debute, il faut afficher le template du jeu
+    #
+    if request.method == 'GET': 
         nb_mystere = randint(0, 100)            # on cree le nb_mystere
-        session['nb_mystere'] = nb_mystere      # on memorise le nb mystere
+        session['nb_mystere'] = nb_mystere      # on memorise le nb mystere d'une requete a une autre
+        session['partie_en_cours'] = True       # la partie est en cours
         print(session)
         
         # afficher le formulaire
