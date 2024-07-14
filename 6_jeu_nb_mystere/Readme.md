@@ -16,3 +16,8 @@ la fonction jeu()
 - quand la partie est gagne 
   - supprimer le cookie de session
   - recommancer la partie
+
+
+TODO
+- pendu
+- morpion
