@@ -11,8 +11,6 @@
 
     <p>Je choisi un entier entre 0 et 100</p>
 
-    
-
     <form action="{{ url_for('jeu') }}" method="POST">
         <p>
             <label for="nombre">Devine le nombre :</label>
@@ -37,7 +35,33 @@
 
         {% if session['nb_essai'] < 10 %}
             <a href="{{ url_for('jeu') }}">Recommencer la partie</a>
+            <hr \>
+            Vos essais : {{ session['essais'] }} 
+                <!-- <ul>
+                    {% for essai in session['essais'] %}
+                        <li>{{ essai }}</li>
+                    {% endfor %}
+                </ul> -->
+            <table>
+                <thead>
+                    <tr>
+                        <td>Tentative</td>
+                        <td>Resultat</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for essai in session['essais'] %}
+                        <tr>
+                            <td>{{ essai }}</td>
+                            <td>{{ "C'est plus" if session['nb_mystere'] > essai  else "C'est moins" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% endif %}
+
+        
 
     {% else %}
     <!-- Cette partie concerne la partie debute ou a ete gagne -->

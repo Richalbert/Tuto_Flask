@@ -51,3 +51,11 @@
     background-color: dodgerblue;
     color: white;
 }
+
+table, th, td {
+    border: 1px, solid;
+}
+
+table {
+    border-collapse: collapse;  /* bordure simple */
+}

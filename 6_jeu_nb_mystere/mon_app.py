@@ -26,6 +26,7 @@ def jeu():
         
         # on recupere la donnee 'name' du formulaire
         reponse = int(request.form.get('nombre'))  
+        session['essais'].append(reponse)
 
         if reponse == session['nb_mystere']:
             message = "C'est gagne !"
@@ -60,6 +61,7 @@ def jeu():
         session['nb_mystere'] = nb_mystere      # on memorise le nb mystere d'une requete a une autre
         session['partie_en_cours'] = True       # la partie est en cours
         session['nb_essai'] = 10                # nb d essai au debut de la partie
+        session['essais'] = []                  # liste des reponses de l'utilsateur
         print(session)
         
         # afficher le formulaire
