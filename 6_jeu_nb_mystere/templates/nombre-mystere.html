@@ -1,53 +1,67 @@
-{% extends "base.html" %}
-
-{% block css %}
+{% extends "base.html" %} {% block css %}
 <!-- static/css/jeu.css -->
-<link rel="stylesheet" href="{{ url_for('static', filename='css/jeu.css') }}">
-{% endblock %}
-
-
-
-{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/jeu.css') }}" />
+{% endblock %} {% block content %}
 <!-- templates/nombre-mystere.html -->
 <div id="jeu">
     <h1>Jeu du nombre mystere</h1>
-
-    {% if session['partie_en_cours'] %} <!-- Cette partie concerne la partie est en cours -->
+    <hr />
+    {% if session['partie_en_cours'] %}
+    <!-- Cette partie concerne la partie est en cours -->
 
     <p>Je choisi un entier entre 0 et 100</p>
+
+    
+
     <form action="{{ url_for('jeu') }}" method="POST">
         <p>
             <label for="nombre">Devine le nombre :</label>
-            <input type="number" name="nombre" id="nombre" required autofocus>
+            <input type="number" name="nombre" id="nombre" required autofocus />
         </p>
         <p>
-            <input class="btn" type="submit" value="Valider">
+            <input class="btn" type="submit" value="Valider" />
         </p>
     </form>
 
-    <hr>
+    <hr \>
+
+        {% if message %} 
+            {{ message }} 
+        {% endif %} 
+    
+        {% if session['nb_essai'] == 10 %}
+            <p>Vous avez {{ session['nb_essai'] }} tentatites pour realiser ce defi</p>
+        {% else %}
+            <p>Il vous reste {{ session['nb_essai'] }} tentatives</p>
+        {% endif %}
+
+        {% if session['nb_essai'] < 10 %}
+            <a href="{{ url_for('jeu') }}">Recommencer la partie</a>
+        {% endif %}
+
+    {% else %}
+    <!-- Cette partie concerne la partie debute ou a ete gagne -->
 
     {% if message %}
-    {{ message }}
-    {% endif %}
+        {{ message }}
+        
+        {% if session['nb_essai'] > 0 %}    <!-- la partie a ete gagne -->
+            <!-- on affiche bravo -->
+            <p>Bravo, le nombre mystere etait bien {{ session['nb_mystere'] }} !</p>
+            <hr \>
+            <p>Vous l'avez trouve en {{ 10 - session['nb_essai'] }} essais</p>
 
+        {% else %}                          <!-- la partie est perdue -->
+            <!-- on affiche tanpis -->
+             <p>Tanpis, le nombre mystere etait {{ session['nb_mystere'] }} </p>
+        {% endif %}
 
-    {% else %} <!-- Cette partie concerne la partie debute ou a ete gagne -->
-
-    {% if message %} <!-- si la partie a ete gagne -->
-    {{ message }} <!-- on affiche bravo -->
-    <p>Le nombre mystere etait {{ session['nb_mystere'] }} !</p>
     {% endif %}
 
     <!-- on affiche un lien pour recommencer la  partie -->
     <a href="{{ url_for('jeu') }}">Nouvelle partie</a>
 
     {% endif %}
-
-
-
-
-
 </div>
 
 {% endblock %}

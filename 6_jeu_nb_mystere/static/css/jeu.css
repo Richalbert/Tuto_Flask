@@ -2,63 +2,44 @@
 
 /* Style pour le conteneur principal avec l'ID "jeu" */
 #jeu {
-    max-width: 700px;
-    /* Limite la largeur maximale à 700 pixels */
-    margin: auto;
-    /* Centre l'élément horizontalement */
-    display: flex;
-    /* Utilise le modèle de boîte flexible pour l'agencement */
-    flex-direction: column;
-    /* Aligne les enfants en colonne */
-    align-items: center;
-    /* Centre les enfants horizontalement */
-    border: 5px solid lightskyblue;
-    /* Ajoute une bordure de 5 pixels de couleur bleu ciel clair */
-    border-radius: 20px;
-    /* Arrondit les coins de la bordure */
+    max-width: 700px; /* Limite la largeur maximale à 700 pixels */
+    margin: auto; /* Centre l'élément horizontalement */
+    display: flex; /* Utilise le modèle de boîte flexible pour l'agencement */
+    flex-direction: column; /* Aligne les enfants en colonne */
+    align-items: center; /* Centre les enfants horizontalement */
+    border: 5px solid lightskyblue; /* Ajoute une bordure de 5 pixels de couleur bleu ciel clair */
+    border-radius: 20px; /* Arrondit les coins de la bordure */
 }
 
 /* Style pour les boutons avec la classe "btn" */
 .btn {
-    display: block;
-    /* Rend le bouton un élément de bloc */
-    margin: auto;
-    /* Centre le bouton horizontalement */
-    border: none;
-    /* Supprime la bordure par défaut */
-    background-color: lightskyblue;
-    /* Définit la couleur de fond à bleu ciel clair */
-    padding: 5px 10px;
-    /* Ajoute un espace intérieur de 5 pixels en haut et en bas, 10 pixels à gauche et à droite */
-    border-radius: 5px;
-    /* Arrondit les coins du bouton */
+    display: block; /* Rend le bouton un élément de bloc */
+    margin: auto; /* Centre le bouton horizontalement */
+    border: none; /* Supprime la bordure par défaut */
+    background-color: lightskyblue; /* Définit la couleur de fond à bleu ciel clair */
+    padding: 5px 10px; /* Ajoute un espace intérieur de 5 pixels en haut et en bas, 10 pixels à gauche et à droite */
+    border-radius: 5px; /* Arrondit les coins du bouton */
 }
 
 /* Style pour le bouton au survol (hover) */
 .btn:hover {
-    cursor: pointer;
-    /* Change le curseur en pointeur lors du survol */
-    background-color: dodgerblue;
-    /* Change la couleur de fond à bleu vif lors du survol */
-    color: white;
-    /* Change la couleur du texte à blanc lors du survol */
+    cursor: pointer; /* Change le curseur en pointeur lors du survol */
+    background-color: dodgerblue; /* Change la couleur de fond à bleu vif lors du survol */
+    color: white; /* Change la couleur du texte à blanc lors du survol */
 }
 
 /* Style pour la balise <hr> dans le conteneur avec l'ID "jeu" */
 #jeu hr {
-    width: 60%;
-    /* Définit la largeur de la ligne de séparation à 60% du conteneur parent */
-    border: none;
-    /* Supprime les bordures par défaut */
-    border-top: 2px solid lightskyblue;
-    /* Ajoute une bordure supérieure de 2 pixels de couleur bleu ciel clair */
+    width: 60%; /* Définit la largeur de la ligne de séparation à 60% du conteneur parent */
+    border: none; /* Supprime les bordures par défaut */
+    border-top: 2px solid lightskyblue; /* Ajoute une bordure supérieure de 2 pixels de couleur bleu ciel clair */
 }
 
 /* Style pour le bouton au survol (hover) */
 #jeu a {
     display: block;
     margin: 10px auto;
-    text-decoration: none;  /* le lien n'est plus souligne et ressemble a un bouton*/
+    text-decoration: none; /* le lien n'est plus souligne et ressemble a un bouton*/
     color: black;
     background-color: lightskyblue;
     padding: 5px 10px;

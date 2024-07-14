@@ -1,0 +1,13 @@
+esbenp.prettier-vscode
+magicstack.magicpython
+ms-python.debugpy
+ms-python.isort
+ms-python.python
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+ms-toolsai.vscode-jupyter-cell-tags
+ms-toolsai.vscode-jupyter-slideshow
+pdconsec.vscode-print
+ritwickdey.liveserver
+yzhang.markdown-all-in-one

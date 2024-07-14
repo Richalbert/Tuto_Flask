@@ -2,19 +2,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mon appli</title>
-</head>
+  </head>
 
-<body>
+  <body>
     {% if nom_utilisateur %}
-    <p>Bonjour {{ nom_utilisateur }}, vous etes connecte</p>
+      <p>Bonjour {{ nom_utilisateur }}, vous etes connecte</p>
     {% else %}
-    <p>Un probleme est survenu</p>
+      <p>Un probleme est survenu</p>
     {% endif %}
-</body>
-
+  </body>
 </html>

@@ -28,16 +28,23 @@ def jeu():
         reponse = int(request.form.get('nombre'))  
 
         if reponse == session['nb_mystere']:
-            message = "Bravo, c'est gagne"
+            message = "C'est gagne !"
 
-            # quand la partie est gagne, la partie s'arrete et la partie en cours s'arrete
+            # quand la partie est gagnee, la partie s'arrete et la partie en cours s'arrete
             session['partie_en_cours'] = False
 
-        elif reponse < session['nb_mystere']:
+        elif reponse < session['nb_mystere']: 
             message = "Votre nombre est trop petit"
 
         else:
             message = "Votre nombre est trop grand"
+
+        session['nb_essai'] -= 1
+
+        # quand la partie est perdue
+        if session['nb_essai'] == 0:
+            session['partie_en_cours'] = False
+            message = "Vous avez perdu !"
 
         print(session)
 
@@ -52,6 +59,7 @@ def jeu():
         nb_mystere = randint(0, 100)            # on cree le nb_mystere
         session['nb_mystere'] = nb_mystere      # on memorise le nb mystere d'une requete a une autre
         session['partie_en_cours'] = True       # la partie est en cours
+        session['nb_essai'] = 10                # nb d essai au debut de la partie
         print(session)
         
         # afficher le formulaire
